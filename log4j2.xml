@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn" shutdownHook="enable">
+  <Properties>
+    <Property name="filename">logs/Shogakotto.log</Property>
+    <Property name="exception">logs/exception.log</Property>
+  </Properties>
+  <Appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout pattern="[%t] %m%n"/>
+    </Console>
+    <RollingRandomAccessFile name="File" fileName="${filename}" filePattern="${filename}.bak">
+      <PatternLayout pattern="%m%n"/>
+      <Policies>
+        <OnStartupTriggeringPolicy />
+        <SizeBasedTriggeringPolicy size="256 MB"/>
+      </Policies>
+    </RollingRandomAccessFile>
+    <RollingRandomAccessFile name="Exception" fileName="${exception}" filePattern="${exception}.bak" immediateFlush="true">
+      <PatternLayout pattern="%d %p %c{1.} [%t] %m%n"/>
+      <Policies>
+        <OnStartupTriggeringPolicy />
+        <SizeBasedTriggeringPolicy size="1 MB"/>
+      </Policies>
+    </RollingRandomAccessFile>
+  </Appenders>
+  <Loggers>
+    <Logger name="com.reuters.rfa" level="warn"/>
+    <Root level="trace">
+      <AppenderRef ref="Console"/>
+      <AppenderRef ref="File"/>
+    </Root>
+  </Loggers>
+</Configuration>

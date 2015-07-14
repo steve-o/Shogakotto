@@ -1,0 +1,11 @@
+*.jar
+ValueAdd_DomainRep.jar.reminder
+logs/
+target/
+typescript
+hazlewood.sh
+invalid.*
+*plano.sh
+signals.*
+taqfromdatetime.*
+tradeperformancespread.*
